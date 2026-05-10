@@ -67,3 +67,4 @@ def agregar_bonos():
 
         print("Tabla 'bonos' agregada exitosamente a fixed_income.db.")
 
+agregar_bonos()

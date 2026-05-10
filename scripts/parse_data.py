@@ -64,9 +64,9 @@ WHERE ticker IN ('BCHICA1015', 'BSTD150216','BCHICM1215');
 query = """
 SELECT *, MAX(date)
 FROM fixed_income 
-WHERE (ticker LIKE 'BSTD%' 
-   OR ticker LIKE 'USTD%' 
-   OR ticker LIKE 'FSTD%')
+WHERE (ticker LIKE 'BTU%'
+    OR ticker LIKE 'BCU%'
+   )
   AND date >= date('now', '-1 month')
 GROUP BY ticker;
 """

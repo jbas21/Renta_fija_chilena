@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
+import plot_curve
+
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(SCRIPT_DIR)
 db_path = os.path.join(BASE_DIR, 'DB', 'fixed_income.db')
@@ -45,6 +47,8 @@ WHERE f.date >= date('now', '-1 month')
   
 ORDER BY f.date, f.ticker
 """
+
+
 
 df = connect_db(query)
 df['date'] = pd.to_datetime(df['date'])
@@ -176,4 +180,24 @@ plt.show()
 
 print(f"\n{sep}")
 print(f"  Gráfico guardado en: {output_path}")
+print(sep)
+
+#curva Soberana BCU PDBC BTU BTP BFT
+
+query_2 = """
+SELECT *, MAX(date)
+FROM fixed_income 
+WHERE (ticker LIKE 'BTU%'
+    OR ticker LIKE 'BCU%'
+   )
+  AND date >= date('now', '-1 month')
+GROUP BY ticker;
+"""
+
+df_soberano = connect_db(query_2)
+
+plot_curve.curva(df_soberano, output_dir=os.path.join(BASE_DIR, 'outputs'))
+
+print(f"\n{sep}")
+print(f"  Gráficos guardados en: {os.path.join(BASE_DIR, 'outputs')}")
 print(sep)
