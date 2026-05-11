@@ -62,13 +62,9 @@ WHERE ticker IN ('BCHICA1015', 'BSTD150216','BCHICM1215');
 
 # Consulta SQL (ejemplo: obtener rendimientos por duración para una fecha específica)
 query = """
-SELECT *, MAX(date)
+SELECT*
 FROM fixed_income 
-WHERE (ticker LIKE 'BTU%'
-    OR ticker LIKE 'BCU%'
-   )
-  AND date >= date('now', '-1 month')
-GROUP BY ticker;
+WHERE ticker IN ('BCHICA1015', 'BSTD150216','BCHICM1215');
 """
 
 
@@ -92,3 +88,7 @@ print(df_simulacion)
 
 # Llamar a la función curva con los datos procesados
 plot_curve.curva(df)
+
+plot_curve.boxplot(df, output_dir='output')
+
+plot_curve.grafico_circular(df, output_dir='output')

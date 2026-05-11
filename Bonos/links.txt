@@ -1,0 +1,5 @@
+https://www.bcentral.cl/web/banco-central/estadisticas-en-excel-mvrf #datos estadistica renta fija
+https://www.cmfchile.cl/institucional/mercados/prospectos.php?pro=BC #Prospectos de renta fija
+https://www.cmfchile.cl/institucional/estadisticas/valores_clasificaciones_asignadas.php # clasificacion de riesgo
+https://www.dcv.cl/emision-de-valores/#asignacion-codigo-isin #ISIN 
+https://www.cmfchile.cl/portal/estadisticas/617/w3-propertyvalue-20153.html #Reporte de Bonos Corporativos

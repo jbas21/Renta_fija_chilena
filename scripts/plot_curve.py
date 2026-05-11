@@ -105,4 +105,52 @@ def grafico_yield(df, output_dir=None):
         print(f'Gráfico de yield guardado en: {output_file}')
     plt.show()
 
+def boxplot(df, output_dir=None):
+    if 'yield_val' not in df.columns:
+        raise ValueError("Falta la columna 'yield_val' en el DataFrame")
+
+    data = df.copy()
+    data = data.dropna(subset=['yield_val'])
+
+    plt.figure(figsize=(12, 6))
+    if 'ticker' in data.columns:
+        sns.boxplot(data=data, x='yield_val', y='ticker', orient='h')
+        plt.title('Boxplot de yield_val por ticker')
+        plt.xlabel('yield_val')
+        plt.ylabel('ticker')
+    else:
+        plt.boxplot(data['yield_val'], vert=False)
+        plt.title('Boxplot de yield_val')
+        plt.xlabel('yield_val')
+
+    plt.grid(axis='x', linestyle='--', alpha=0.5)
+
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
+        output_file = os.path.join(output_dir, 'boxplot_yield_val.png')
+        plt.savefig(output_file, dpi=150, bbox_inches='tight')
+        print(f'Boxplot guardado en: {output_file}')
+
+    plt.show()
+
+def grafico_circular(df, output_dir=None):
+    if 'ticker' not in df.columns:
+        raise ValueError("Falta la columna 'ticker' en el DataFrame")
+
+    data = df.copy()
+    data = data.dropna(subset=['ticker'])
+    counts = data['ticker'].value_counts()
+
+    plt.figure(figsize=(8, 8))
+    plt.pie(counts, labels=counts.index, autopct='%1.1f%%', startangle=140)
+    plt.title('Distribución de Tickers')
+    plt.axis('equal')
+
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
+        output_file = os.path.join(output_dir, 'grafico_circular_tickers.png')
+        plt.savefig(output_file, dpi=150, bbox_inches='tight')
+        print(f'Gráfico circular guardado en: {output_file}')
+
+    plt.show()
 
