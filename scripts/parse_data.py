@@ -26,9 +26,6 @@ def connect_db(query, db_path):
          
 
 
-
-
-
 #ejemplo consulta SQL para obtener datos de rendimiento y duración
 '''SELECT *, MAX(date)
 FROM fixed_income 
@@ -64,7 +61,7 @@ WHERE ticker IN ('BCHICA1015', 'BSTD150216','BCHICM1215');
 query = """
 SELECT*
 FROM fixed_income 
-WHERE ticker IN ('BCHICA1015', 'BSTD150216','BCHICM1215');
+WHERE ticker IN ('BENJO-AA', 'BENJO-I','BENJO-J','BENJO-K','BENJO-L','BENJO-M','BENJO-N','BENJO-O','BENJO-P','BENJO-Q');
 """
 
 
@@ -89,6 +86,6 @@ print(df_simulacion)
 # Llamar a la función curva con los datos procesados
 plot_curve.curva(df)
 
-plot_curve.boxplot(df, output_dir='output')
+plot_curve.boxplot(df, output_dir='outputs')
 
-plot_curve.grafico_circular(df, output_dir='output')
+plot_curve.grafico_circular(df, output_dir='outputs')

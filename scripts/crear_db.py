@@ -4,6 +4,7 @@ import os
 import re
 import glob
 
+
 # Function to extract date from filename
 def extract_date(filename):
     match = re.search(r'Chile_PriceVector_(\d{4}-\d{2}-\d{2})\.xlsx', filename)
